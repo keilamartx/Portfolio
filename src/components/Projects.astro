@@ -1,0 +1,36 @@
+---
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section id="proyectos" class="max-w-6xl mx-auto px-8 py-24 relative">
+			<div class="mb-16">
+				<h2 class="text-4xl font-black text-text dark:text-light tracking-tighter">
+					PROYECTOS<span class="text-green">LAB</span>
+				</h2>
+				<div class="h-1 w-20 bg-blue mt-2"></div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 whitespace-pre-line">
+				<ProjectCard
+					title="Agente Anemia"
+					description="Sistema Inteligente que analiza síntomas mediante un chat con IA basado en Phi-3 y una Artificial Neural Network (ANN) para identificar posibles tipos de anemia."
+					tags={["Python", "Flask", "NLP"]}
+					link="https://github.com/keilamartx/AgenteAnemia"
+					projectUrl="https://github.com/keilamartx/AgenteAnemia"
+				/>
+				<ProjectCard
+					title="Auditoría de Seguridad IoT"
+					description="En desarrollo... \n Proyecto de investigación enfocado en la identificación y análisis de vulnerabilidades en dispositivos IoT domésticos, con el objetivo de comprender riesgos y proponer medidas de seguridad"
+					tags={["Kali Linux", "Vulnerability Assessment", "IoT"]}
+					showArrow={false}
+				/>
+
+				<ProjectCard
+					title="Plataforma CAPREM"
+					description="En desarrollo... \n Desarrollo de sitio web integral para servicios psicológicos, optimizando la gestión de citas."
+					tags={["WordPress", "CSS", "PHP", "Vite"]}
+					projectUrl="https://honeydew-dragonfly-393533.hostingersite.com/"
+				/>
+			</div>
+		</section>
+

@@ -1,0 +1,68 @@
+---
+// ContactTerminal.astro
+---
+
+<section id="contacto" class="max-w-4xl mx-auto px-8 py-24 relative z-10">
+  <div class="w-full shadow-2xl rounded-xl overflow-hidden border border-white/5 bg-slate-950 font-mono text-sm">
+    
+    <div class="flex items-center gap-2 px-4 py-2.5 bg-slate-900 border-b border-white/5 relative">
+      <div class="flex gap-1.5">
+        <div class="w-3 h-3 rounded-full bg-red-500/10 border border-red-500/40 hover:bg-red-500 transition-colors cursor-pointer"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500/10 border border-yellow-500/40 hover:bg-yellow-500 transition-colors cursor-pointer"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500/10 border border-green-500/40 hover:bg-green-500 transition-colors cursor-pointer"></div>
+      </div>
+      <span class="absolute left-1/2 -translate-x-1/2 text-slate-500 text-xs">secure_connect.sh</span>
+    </div>
+
+    <div class="p-6 md:p-10 space-y-4 text-slate-300">
+      
+      <div class="flex gap-2.5 items-center">
+        <span class="text-green-dark">➜</span>
+        <span class="text-blue-light">~/guest</span>
+        <span class="text-slate-400">./connect.sh --target=portfolio_admin</span>
+      </div>
+
+      <div class="py-2 space-y-1 text-slate-500 italic text-xs">
+        <p>[Verificando credenciales de invitado...] <span class="text-green-dark">DONE</span></p>
+        <p>[Abriendo canal de comunicación segura...] <span class="text-green-dark">DONE</span></p>
+      </div>
+
+      <div class="pt-4 pb-2">
+        <p class="text-lg md:text-xl font-bold text-slate-500 leading-tight mb-2">
+          *** SESIÓN INICIADA CON ÉXITO ***
+        </p>
+        <p class="text-slate-300">
+          Actualmente el administrador está <span class="text-green-dark font-bold animate-pulse">EN LÍNEA</span> y receptivo a nuevas propuestas.
+        </p>
+      </div>
+
+      <div class="py-4 space-y-3">
+        <p class="text-slate-400">// <span class="text-green font-bold animate-pulse">Conectemos!</span> <span class="text-slate-400">Selecciona un método de comunicación:</span></p>
+        
+        <a href="mailto:martinezskeila@gmail.com" class="group flex items-center gap-3 p-3 rounded-lg border border-white/5 bg-white/5 hover:border-blue/50 hover:bg-blue/10 transition-all">
+          <span class="text-green-dark font-bold">[1]</span>
+          <span class="text-blue-light">MAIL:</span>
+          <span class="text-slate-200 group-hover:text-white">martinezskeila@gmail.com</span>
+          <span class="ml-auto text-slate-600">→</span>
+        </a>
+
+        <a href="https://linkedin.com/in/keilamartx" target="_blank" class="group flex items-center gap-3 p-3 rounded-lg border border-white/5 bg-white/5 hover:border-blue/50 hover:bg-blue/10 transition-all">
+          <span class="text-green-dark font-bold">[2]</span>
+          <span class="text-blue-light">LINKEDIN:</span>
+          <span class="text-slate-200 group-hover:text-white">in/keilamartx</span>
+          <span class="ml-auto text-slate-600">→</span>
+        </a>
+      </div>
+
+      <div class="flex gap-2 items-center pt-4 border-t border-white/5 text-slate-500">
+        <p>[SESIÓN ACTIVA]</p>
+        <div class="flex gap-1.5 items-center">
+          <span class="text-green-dark">guest@portfolio</span>
+          <span class="text-slate-500">➜</span>
+          <span class="animate-pulse">_</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

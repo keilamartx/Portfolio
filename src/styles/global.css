@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+
+  --color-green: #72A031;
+  --color-green-light: #B5D984;
+  --color-green-dark: #597D26;
+  --color-blue: #195B8A;
+  --color-blue-light: #4EA2DF;
+  --color-blue-dark: #103A57;
+
+  --color-text: #333333;
+  --color-light: #f8fafc;
+  
+  /* Colores de fondo */
+  --color-bg-dark: #020617;
+  --color-bg-light: #f8fafc;
+}
+
+/* Modo oscuro con la clase .dark en el HTML */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Animación para botón */
+@layer utilities {
+  @keyframes cursed-pulse {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(25, 91, 138, 0.4), 0 0 10px rgba(25, 91, 138, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(25, 91, 138, 0.8), 0 0 25px rgba(25, 91, 138, 0.6);
+    }
+  }
+
+  .animate-cursed-pulse {
+    animation: cursed-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}

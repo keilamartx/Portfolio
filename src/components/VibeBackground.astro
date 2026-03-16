@@ -1,0 +1,101 @@
+<canvas id="vibe-canvas"></canvas>
+
+<script>
+  const canvas = document.getElementById("vibe-canvas") as HTMLCanvasElement;
+  const ctx = canvas.getContext("2d");
+
+  const style = getComputedStyle(document.documentElement);
+  let particles: any[] = [];
+  const colors = [
+    style.getPropertyValue('--color-green-light').trim() || "#CAE3A5",
+    style.getPropertyValue('--color-green-dark').trim() || "#597D26",
+    style.getPropertyValue('--color-blue').trim() || "#195B8A"
+  ];
+
+  function init() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particles = [];
+    // Crear 80 partículas (brillitos y hojas)
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 5 + 1,
+        speedX: Math.random() * 1 - 0.5,
+        speedY: Math.random() * 0.5 + 0.2, // Caer suave
+        color: colors[Math.floor(Math.random() * colors.length)],
+        type: Math.random() > 0.5 ? "circle" : "leaf", // Mitad brillos, mitad hojas
+        rotation: Math.random() * 360,
+      });
+    }
+  }
+
+  function animate() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = 0.6;
+
+      if (p.type === "circle") {
+        // Dibujar brillitos
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        // Dibujar hojas (curvas Bezier)
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+
+        // Dibujar hoja con forma de hoja de árbol
+        ctx.beginPath();
+        ctx.moveTo(0, -p.size * 1.5); // Punta superior
+        ctx.quadraticCurveTo(
+          p.size * 1.2,
+          -p.size * 0.5, // Punto de control derecho
+          0,
+          p.size * 1.2, // Base inferior
+        );
+        ctx.quadraticCurveTo(
+          -p.size * 1.2,
+          -p.size * 0.5, // Punto de control izquierdo
+          0,
+          -p.size * 1.5, // Regreso a la punta
+        );
+        ctx.fill();
+        ctx.restore();
+        p.rotation += 0.5;
+      }
+
+      // Movimiento
+      p.y += p.speedY;
+      p.x += p.speedX;
+
+      // Resetear si salen de la pantalla
+      if (p.y > canvas.height) p.y = -10;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.x < 0) p.x = canvas.width;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", init);
+  init();
+  animate();
+</script>
+
+<style>
+  #vibe-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none; /* Para que no interfiera con los clics en botones */
+  }
+</style>
